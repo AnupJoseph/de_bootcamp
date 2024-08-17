@@ -1,1 +1,1 @@
-SELECT COUNT(1) FROM yellow_taxi_data LIMIT 10
+DROP TABLE yellow_taxi_data
