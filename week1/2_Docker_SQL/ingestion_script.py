@@ -13,20 +13,18 @@ from alive_progress import alive_it
 
 
 def main(
-    name: str,
-    password: str,
-    host: str,
-    port: int,
-    database_name: str,
-    table_name: str,
-    url: str,
+    user: str = typer.Option("root", help="Username"),
+    password: str = typer.Option("root", help="Password"),
+    host: str = typer.Option("root", help="Database host"),
+    port: int = typer.Option("root", help="Database port"),
+    db: str = typer.Option("root", help="Database name"),
+    table_name: str = typer.Option("root", help="Table to save in the DB"),
+    url: str = typer.Option("root", help="Parquet file URL"),
 ):
     csv_name = "output.csv"
 
     os.system(f"wget {url} -O {csv_name}")
-    engine = create_engine(
-        f"postgresql://{name}:{password}@{host}:{port}/{database_name}"
-    )
+    engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{db}")
 
     parquet_file = pq.ParquetFile(csv_name)
 
