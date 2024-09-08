@@ -10,5 +10,8 @@
             "username": "root",
             "password": "root"
         }
+    ],
+    "conventionalCommits.scopes": [
+        "week1"
     ]
 }
